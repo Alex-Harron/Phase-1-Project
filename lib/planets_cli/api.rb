@@ -1,6 +1,4 @@
 class API
-
-
     def self.get_data
         response = RestClient.get('https://swapi.dev/api/planets/')
         planets_array = JSON.parse(response)["results"]
@@ -8,5 +6,4 @@ class API
             Planet.new(planet)
         end
     end
-
 end
