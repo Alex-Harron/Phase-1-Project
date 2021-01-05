@@ -4,11 +4,10 @@ class Planet
 
     attr_accessor :name, :climate, :terrain, :population
 
-    def initialize (name, climate, terrain, population)
-        @name = name
-        @climate = climate
-        @terrain = terrain
-        @population = population
+    def initialize (planet_hash)
+        planet_hash.each do |k, v|
+            self.send("#{k}=", v) if self.respond_to?("#{k}=")
+        end
         save
     end
 
